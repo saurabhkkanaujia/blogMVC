@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!doctype html>
 <html lang="en">
 
@@ -66,7 +63,23 @@
           </div>
 
           <h2>Users</h2>
-                     
+          <form action="searchUser" method="POST" class="row row-cols-lg-auto g-3 align-items-center">
+            <div class="col-12">
+                <label class="visually-hidden" for="inlineFormInputGroupUsername">Search</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" 
+                    name="searchField" placeholder="Enter id,name...">
+                </div>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" name="searchUser" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+
+            <div class="col-12">
+              <a class="btn btn-success" href="signup">Add User</a>
+            </div>
           <div class="table-responsive">
             <form action="userAction" method="POST">
             <table class="table table-striped table-sm">
@@ -77,48 +90,40 @@
                   <th scope="col">Email</th>
                   <th scope="col">Role</th>
                   <th scope="col">Status</th>
+                  <th scope="col">Action</th>
                   
                 </tr>
               </thead>
               <tbody>
                 <?php
-                foreach ($data['users'] as $value) {
+                foreach ($data as $value) {
                     echo "<tr>
                   <td>" . $value->id . "</td>
                   <td>" . $value->name . "</td>
                   <td>" . $value->email . "</td>
                   <td>" . $value->role . "</td>
                   <td>" . $value->status . "</td>";
+
+                  if ($value->status == "Not Approved") {
+                        echo "<td><button class='btn btn-success' 
+                      type='submit' name = 'approve' value = " . $value->id . ">
+                      Approve</button>
+
+  ";
+                    } else {
+                      echo "<td><button class='btn btn-danger' 
+                      type='submit' name = 'restrict' value = " . $value->id . ">
+                      Restrict</button>
+  ";
+                    }
+                    echo "<button class='btn btn-danger' type='submit' 
+                  name = 'deleteUser' value = " . $value->id . ">Delete</button></td>
+  </td></tr> ";
                   }
                 
                 ?>
               </tbody>
             </table>
-
-            <h2>Posts</h2>
-
-            <table class="table table-striped table-sm">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                        foreach ($data['posts'] as $key => $value) {
-                                echo "<tr>
-                  <td>" . $value->id . "</td>
-                  <td>" . $value->title . "</td>
-                  <td>" . $value->category . "</td>
-                  <td>" . $value->description . "</td>";
-                            
-                        }
-                        ?>
-                    </tbody>
-                </table>
             </form>
           </div>
           

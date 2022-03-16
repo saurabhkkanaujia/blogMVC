@@ -28,7 +28,7 @@
 
                                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign In</p>
 
-                                    <form action="http://localhost:8080/public/admin/userLogin" method="POST" class="mx-1 mx-md-4">
+                                    <form action="userLogin" method="POST" class="mx-1 mx-md-4">
                                         <span class="text-danger">
                                             <?php echo isset($data['msg'])?$data['msg']:''; ?>
                                         </span>

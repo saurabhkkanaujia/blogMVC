@@ -172,6 +172,10 @@
       <h1 class="mb-0 h4 display-3 fw-bold">Blogs</h1>
       <div class="col-12 mt-5 text-start">
                 <a class="btn btn-success fs-4" href="addPost">Add Post</a>
+                <a class="btn btn-success fs-4" aria-current="page" href="dashboard">
+              <span data-feather="home"></span>
+              Dashboard
+            </a>
     </div>
     </div>
     <!-- Jumbotron -->
